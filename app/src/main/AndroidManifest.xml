@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BillE">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.CantidadProductosActivity"></activity>
+        <activity android:name=".view.RealizarVentaActivity" />
+        <activity android:name=".view.SeleccionarClienteActivity" />
+        <activity android:name=".view.EmpleadoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
