@@ -3,6 +3,7 @@ package com.example.bill_e.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -77,21 +78,27 @@ public class CantidadProductosActivity extends AppCompatActivity {
 
     public void cantidadesCorrecto(){
 
-            String texto = "";
-            ArrayList<Integer> cantidades = cantidadProductoAdapter.getCantidades();
-            for (int i=0; i<cantidades.size();i++){
-                texto = texto + cantidades.get(i).toString();
-            }
+
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle("Error")
-                .setMessage(texto)
+        builder.setTitle("Compra Realizada")
+                .setMessage("Su compra ha sido realizada, la factura se enviará a su correo electrónico")
                 //.setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
+                        volverMenuPrincipal();
                     }
+
+
                 })
                 .show();
+
+
+    }
+
+     void volverMenuPrincipal(){
+        Intent newActivity = new Intent(this, EmpleadoActivity.class);
+        startActivity(newActivity);
+        finish();
     }
 }
