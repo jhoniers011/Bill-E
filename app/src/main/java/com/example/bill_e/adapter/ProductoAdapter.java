@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bill_e.R;
-import com.example.bill_e.model.pojo.Cliente;
 import com.example.bill_e.model.pojo.Producto;
 import com.google.android.material.card.MaterialCardView;
 
@@ -20,13 +19,13 @@ import java.util.List;
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHolder>{
 
 
-    private List<Producto> listaproductos;
+    private ArrayList<Producto> listaproductos;
     private Context context;
     boolean isSelectedMode = false;
-    List<Producto> SelectedItems = new ArrayList<Producto>();
+    ArrayList<Producto> SelectedItems = new ArrayList<Producto>();
 
 
-    public ProductoAdapter(List<Producto> Listaproductos,Context context) {
+    public ProductoAdapter(ArrayList<Producto> Listaproductos,Context context) {
         this.listaproductos = Listaproductos;
         this.context = context;
     }
@@ -41,7 +40,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
         }
 
     }
-    public List<Producto> getSelectedItems(){
+    public ArrayList<Producto> getSelectedItems(){
         return  SelectedItems;
     }
 
@@ -77,9 +76,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.NombreListaProductosTextView);
+            nombre = itemView.findViewById(R.id.NombreCantidadProductoTextView);
             cantidad = itemView.findViewById(R.id.CantidadDisponibleTextView);
-            codigo = itemView.findViewById(R.id.CodigoListaProductosTextView);
+            codigo = itemView.findViewById(R.id.CodigoCantidadProductoTextView);
             cardView = itemView.findViewById(R.id.TarjetaProductoCardView);
 
 

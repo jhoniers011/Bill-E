@@ -11,14 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bill_e.R;
+import com.example.bill_e.adapter.CantidadProductoAdapter;
 import com.example.bill_e.adapter.ProductoAdapter;
 import com.example.bill_e.controller.EmpleadoController;
+import com.example.bill_e.model.pojo.Producto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CantidadProductosFragment extends Fragment {
 
     private RecyclerView recyclerCantidadProductos;
-    private ProductoAdapter adapterCantidadProducto;
+    private CantidadProductoAdapter adapterCantidadProducto;
     private EmpleadoController empleadoController;
 
     public CantidadProductosFragment() {
@@ -47,7 +52,10 @@ public class CantidadProductosFragment extends Fragment {
         recyclerCantidadProductos = view.findViewById(R.id.recyclercantidadProductos);
         recyclerCantidadProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         empleadoController = new EmpleadoController();
-        
+
+        ArrayList<Producto> ListaProducto = (ArrayList<Producto>) getArguments().getSerializable("productos");
+        adapterCantidadProducto = new CantidadProductoAdapter(ListaProducto);
+        recyclerCantidadProductos.setAdapter(adapterCantidadProducto);
 
         return view;
     }

@@ -64,9 +64,9 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            nombres = itemView.findViewById(R.id.NombreListaProductosTextView);
-            apellidos = itemView.findViewById(R.id.CodigoListaProductosTextView);
-            cedula = itemView.findViewById(R.id.PrecioListaClientesTextView);
+            nombres = itemView.findViewById(R.id.NombreCantidadProductoTextView);
+            apellidos = itemView.findViewById(R.id.CodigoCantidadProductoTextView);
+            cedula = itemView.findViewById(R.id.PrecioCantidadProductoTextView);
             cardView = itemView.findViewById(R.id.TarjetaClienteCardView);
 
         }

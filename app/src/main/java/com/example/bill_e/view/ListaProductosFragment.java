@@ -53,8 +53,8 @@ public class ListaProductosFragment extends Fragment {
         recyclerListaProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         empleadoController = new EmpleadoController();
 
-        List<Producto> ListaProducto = new ArrayList<>();
-        ListaProducto =  empleadoController.listarProductos(getContext());
+        ArrayList<Producto> ListaProducto = new ArrayList<>();
+        ListaProducto = (ArrayList<Producto>) empleadoController.listarProductos(getContext());
 
         adapterProducto = new ProductoAdapter(ListaProducto,getContext());
         recyclerListaProductos.setAdapter(adapterProducto);

@@ -13,9 +13,12 @@ import com.example.bill_e.R;
 import com.example.bill_e.adapter.ProductoAdapter;
 import com.example.bill_e.controller.EmpleadoController;
 import com.example.bill_e.model.pojo.Cliente;
+import com.example.bill_e.model.pojo.Producto;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RealizarVentaActivity extends AppCompatActivity {
 
@@ -60,7 +63,8 @@ public class RealizarVentaActivity extends AppCompatActivity {
         Intent newActivity = new Intent(this, CantidadProductosActivity.class);
         Cliente cliente = (Cliente) getIntent().getExtras().getSerializable("cliente");
         newActivity.putExtra("clienteproductos",cliente);
-        newActivity.putExtra("productos", (Serializable) productoAdapter.getSelectedItems());
+        ArrayList<Producto> lista = productoAdapter.getSelectedItems();
+        newActivity.putExtra("productos", (Serializable) lista);
         startActivity(newActivity);
         finish();
     }

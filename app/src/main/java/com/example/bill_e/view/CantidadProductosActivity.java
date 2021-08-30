@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.bill_e.R;
+import com.example.bill_e.adapter.CantidadProductoAdapter;
+import com.example.bill_e.model.pojo.Producto;
+
+import java.util.ArrayList;
 
 public class CantidadProductosActivity extends AppCompatActivity {
 
-    ListaProductosFragment fragment;
+    CantidadProductosFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +21,9 @@ public class CantidadProductosActivity extends AppCompatActivity {
 
         //cargando fragmento
 
-        fragment = new ListaProductosFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.layoutfragmentRealizarVenta,fragment).commit();
+        fragment = new CantidadProductosFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.LayoutCantidadProducto,fragment).commit();
+
+        //ArrayList<Producto> lista = (ArrayList<Producto>) getIntent().getExtras().getSerializable("productos");
     }
 }

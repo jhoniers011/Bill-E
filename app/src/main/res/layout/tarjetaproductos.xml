@@ -50,7 +50,7 @@
             tools:layout_conversion_absoluteWidth="0dp" />
 
         <TextView
-            android:id="@+id/NombreListaProductosTextView"
+            android:id="@+id/NombreCantidadProductoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -61,7 +61,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/CodigoListaProductosTextView"
+            android:id="@+id/CodigoCantidadProductoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -70,7 +70,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView4" />
 
         <TextView
-            android:id="@+id/PrecioListaClientesTextView"
+            android:id="@+id/PrecioCantidadProductoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -93,8 +93,8 @@
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/PrecioListaClientesTextView"
-            app:layout_constraintStart_toEndOf="@+id/PrecioListaClientesTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/PrecioCantidadProductoTextView"
+            app:layout_constraintStart_toEndOf="@+id/PrecioCantidadProductoTextView"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
