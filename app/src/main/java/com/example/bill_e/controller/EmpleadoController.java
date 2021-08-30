@@ -25,7 +25,7 @@ public class EmpleadoController {
     private ProductoRoomDao productoRoomDao;
 
 
-    public void comprobarCantidades(CantidadProductosActivity activity, CantidadProductoAdapter adapter){
+    public void comprobarCantidadesVacio(CantidadProductosActivity activity, CantidadProductoAdapter adapter){
 
         ArrayList<Integer> cantidades = adapter.getCantidades();
         boolean vacio = false;
@@ -43,9 +43,27 @@ public class EmpleadoController {
             activity.cantidadesCorrecto();
         }
 
-        //Si es correcto llama al metodo CantidadesCorrecto().
-        //activityCantidadesProcucto.cantiadesCorrecto()
+
     }
+
+
+    public boolean comprobarCantidadesDisponibles(CantidadProductosActivity activity,CantidadProductoAdapter adapter,ArrayList<Producto> productos){
+
+        ArrayList<Integer> cantidades = adapter.getCantidades();
+
+        for (int i=0;i<productos.size();i++){
+            if (cantidades.get(i) > productos.get(i).getCantidad() ){
+                activity.sinExistenciasSuficientes();
+                return true;
+            }
+        }
+        return  false;
+
+
+
+    }
+
+
 
     public void comprobarConexion(EmpleadoActivity EmpleadoActivity){
         // Si hay conexión
@@ -147,6 +165,8 @@ public class EmpleadoController {
             cliente3.setTipocliente("Empresa");
             cliente3.setRazonsocial(" Mendez y C.I.A");
             cliente3.setRut("695071000");
+            cliente3.setNombre("");
+            cliente3.setApellidos("");
             this.clienteRoomDao.insertOne(cliente3);
 
 
@@ -185,6 +205,17 @@ public class EmpleadoController {
             producto3.setIva(19);
             this.productoRoomDao.insertOne(producto3);
         }
+
+    }
+
+    public  double calcularTotal(ArrayList<Producto> productos){
+
+        double total = 0;
+
+        for (int i=0;i<productos.size();i++){
+            total = total + (productos.get(i).getPrecio()*productos.get(i).getCantidad());
+        }
+        return total;
 
     }
 

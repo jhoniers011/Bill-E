@@ -9,11 +9,14 @@ import android.widget.Button;
 
 import com.example.bill_e.R;
 import com.example.bill_e.controller.EmpleadoController;
+import com.example.bill_e.model.LocalStorage;
+import com.example.bill_e.model.dao.ClienteRoomDao;
 
 public class EmpleadoActivity extends AppCompatActivity {
 
     private Button GenerarFacturaButton,IngresarProductoButton, IngresarClienteButton;
     private EmpleadoController ControllerEmpleado;
+    private ClienteRoomDao clienteRoomDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,11 @@ public class EmpleadoActivity extends AppCompatActivity {
                 iniciarIngresarCliente();
             }
         });
+
+        //this.clienteRoomDao = LocalStorage.getLocalStorage(this.getApplicationContext()).clienteRoomDao();
+        //this.clienteRoomDao.deleteAll();
+
+
     }
 
     private void conexion(){
@@ -58,19 +66,19 @@ public class EmpleadoActivity extends AppCompatActivity {
     public void conexionCorrecta(){
         Intent newActivity = new Intent(this, SeleccionarClienteActivity.class);
         startActivity(newActivity);
-        finish();
+        //finish();
     }
 
     private void iniciarIngresarProducto(){
         Intent newActivity = new Intent(this, IngresarProductoActivity.class);
         startActivity(newActivity);
-        finish();
+        //finish();
     }
 
     private  void iniciarIngresarCliente(){
         Intent newActivity = new Intent(this, IngresarClienteActivity.class);
         startActivity(newActivity);
-        finish();
+        //finish();
     }
 
 

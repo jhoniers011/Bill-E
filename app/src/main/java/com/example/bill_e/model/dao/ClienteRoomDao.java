@@ -34,5 +34,11 @@ public interface ClienteRoomDao {
     @Delete
     void deleteOne(Cliente cliente);
 
+    @Query("DELETE FROM Cliente")
+    void deleteAll();
+
+    @Query("SELECT documentoidentidad FROM cliente where documentoidentidad = :documento")
+    List<String>  findcedula(String documento);
+
 
 }

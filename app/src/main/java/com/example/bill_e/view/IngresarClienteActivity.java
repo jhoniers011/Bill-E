@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class IngresarClienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresar_cliente);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         telefono = findViewById(R.id.TelefonoTextNumber);
         direccion = findViewById(R.id.DireccionTextNumber);
         pais = findViewById(R.id.PaisTextNumber);
@@ -75,6 +78,33 @@ public class IngresarClienteActivity extends AppCompatActivity {
             }
         });
 
+        persona.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    nombre.setEnabled(true);
+                    apellidos.setEnabled(true);
+                    disableEmpresa();
+                }else {
+                    nombre.setEnabled(false);
+                    apellidos.setEnabled(false);
+                }
+            }
+        });
+
+        empresa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    razónSocial.setEnabled(true);
+                    Rut.setEnabled(true);
+                    disablePersona();
+                }else {
+                    razónSocial.setEnabled(false);
+                    Rut.setEnabled(false);
+                }
+            }
+        });
 
 
     }
@@ -92,6 +122,12 @@ public class IngresarClienteActivity extends AppCompatActivity {
         String ApellidosT =  apellidos.getText().toString();
         String RazonT =  razónSocial.getText().toString();
         String Rutt =  Rut.getText().toString();
+        String TipoClientet = "";
+        if (persona.isChecked()){
+            TipoClientet = "Persona";
+        }else {
+            TipoClientet = "Empresa";
+        }
         Cliente cliente = new Cliente();
         cliente.setRut(Rutt);
         cliente.setRazonsocial(RazonT);
@@ -105,8 +141,9 @@ public class IngresarClienteActivity extends AppCompatActivity {
         cliente.setMunicipio(municipioT);
         cliente.setCodigopostal(codigoT);
         cliente.setTipodocumento(tipodocumento);
+        cliente.setTipocliente(TipoClientet);
 
-        ingresarClienteController.comprobarCliente(this,cliente);
+        ingresarClienteController.comprobarCliente(this,cliente,persona.isChecked(),empresa.isChecked());
 
     }
 
@@ -134,6 +171,61 @@ public class IngresarClienteActivity extends AppCompatActivity {
         finish();
     }
 
+    public void documentoRepetido(){
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        builder.setTitle("Error")
+                .setMessage("El documento de identidad ingresado ya se encuentra registrado en el sistema")
+                //.setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }
+
+    public void tipoClienteNoEspecificado(){
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        builder.setTitle("Error")
+                .setMessage("No se ha especificado el tipo de cliente")
+                //.setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }
+
+    public  void campoVacio(){
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        builder.setTitle("Error")
+                .setMessage("No ha ingresado todos los campos obligatorios, por favor ingrese dichos valores")
+                //.setCancelable(false)
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .show();
+    }
+
+    private void disablePersona(){
+            nombre.setEnabled(false);
+            apellidos.setEnabled(false);
+            persona.setChecked(false);
+
+    }
+
+
+    private void disableEmpresa(){
+        razónSocial.setEnabled(false);
+        Rut.setEnabled(false);
+        empresa.setChecked(false);
+    }
 }
 
 

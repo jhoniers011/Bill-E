@@ -3,9 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/TarjetaProductoCardView"
-    android:checkable="true"
-    android:clickable="true"
-    android:focusable="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,12 +11,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/fotocliente"
+            android:id="@+id/fotoproductocantidad"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/ic_menu_mapmode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="50dp"
@@ -30,10 +26,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
             android:text="Código"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
+            app:layout_constraintTop_toBottomOf="@+id/NombreCantidadProductoTextView"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_editor_luteWidth="0dp" />
 
@@ -42,10 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
             android:text="Precio"
-            app:layout_constraintBottom_toBottomOf="@+id/fotocliente"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintBottom_toBottomOf="@+id/fotoproductocantidad"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
@@ -57,7 +53,7 @@
             android:layout_marginTop="8dp"
             android:text="NombreProducto"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -66,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="123456"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintStart_toEndOf="@+id/textView4" />
 
@@ -98,6 +95,26 @@
             android:text="Cantidad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Cantidad disponible"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/CantidadDisponibleIngresarCantidadTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Cantidad"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

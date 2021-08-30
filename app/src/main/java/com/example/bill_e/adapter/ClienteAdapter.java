@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,9 +37,28 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        holder.nombres.setText(listaClientes.get(position).getNombre());
-        holder.apellidos.setText(listaClientes.get(position).getApellidos());
+
+        if(listaClientes.get(position).getNombre().isEmpty()){
+            holder.nombres.setText("Razón Social: "+listaClientes.get(position).getRazonsocial());
+            holder.apellidos.setText( "Rut: " + listaClientes.get(position).getRut());
+        }else {
+            holder.nombres.setText("Nombres: " + listaClientes.get(position).getNombre());
+            holder.apellidos.setText("Apellidos: " + listaClientes.get(position).getApellidos());
+        }
+
+
         holder.cedula.setText(listaClientes.get(position).getDocumentoidentidad());
+        if(listaClientes.get(position).getTipocliente().compareTo("Persona") == 0){
+            holder.imagen.setImageResource(R.drawable.ic_baseline_person_24);
+            holder.smallImage.setImageResource(R.drawable.ic_baseline_person_24);
+            holder.tipoCliente.setText("Persona");
+        }else {
+            holder.imagen.setImageResource(R.drawable.ic_empresa);
+            holder.smallImage.setImageResource(R.drawable.ic_empresa);
+            holder.tipoCliente.setText("Empresa");
+        }
+
+
 
         holder.bind();
     }
@@ -59,8 +79,9 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
 
     public   class  viewHolder extends RecyclerView.ViewHolder{
 
-        private TextView nombres,apellidos,cedula;
+        private TextView nombres,apellidos,cedula,tipoCliente;
         private MaterialCardView cardView;
+        private ImageView imagen,smallImage;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,6 +89,9 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
             apellidos = itemView.findViewById(R.id.CodigoCantidadProductoTextView);
             cedula = itemView.findViewById(R.id.PrecioCantidadProductoTextView);
             cardView = itemView.findViewById(R.id.TarjetaClienteCardView);
+            imagen = itemView.findViewById(R.id.fotoproductocantidad);
+            smallImage = itemView.findViewById(R.id.imageCliente);
+            tipoCliente = itemView.findViewById(R.id.TipoClienteTextView);
 
         }
 

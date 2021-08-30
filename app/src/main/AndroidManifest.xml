@@ -9,11 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BillE">
-        <activity android:name=".view.IngresarClienteActivity"></activity>
-        <activity android:name=".view.IngresarProductoActivity" />
-        <activity android:name=".view.CantidadProductosActivity" />
-        <activity android:name=".view.RealizarVentaActivity" />
-        <activity android:name=".view.SeleccionarClienteActivity" />
+        <activity android:name=".view.IngresarClienteActivity"
+            android:parentActivityName=".view.EmpleadoActivity"/>
+        <activity android:name=".view.IngresarProductoActivity"
+            android:parentActivityName=".view.EmpleadoActivity"
+            />
+        <activity android:name=".view.CantidadProductosActivity"
+            android:parentActivityName=".view.RealizarVentaActivity"
+            />
+        <activity android:name=".view.RealizarVentaActivity"
+            android:parentActivityName=".view.SeleccionarClienteActivity"
+            />
+        <activity android:name=".view.SeleccionarClienteActivity"
+            android:parentActivityName=".view.EmpleadoActivity"
+            />
         <activity android:name=".view.EmpleadoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

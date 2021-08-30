@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,9 +40,12 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         holder.nombre.setText(listaProductos.get(position).getNombre());
-        holder.cantidad.setText(Integer.toString(listaProductos.get(position).getCantidad()));
+        //holder.cantidad.setText(Integer.toString(listaProductos.get(position).getCantidad()));
         holder.precio.setText(Integer.toString(listaProductos.get(position).getPrecio()));
         holder.codigo.setText(Integer.toString(listaProductos.get(position).getPid()));
+        holder.imagencantidadproducto.setImageResource(R.drawable.ic_producto);
+        holder.cantidadDisponible.setText(Integer.toString(listaProductos.get(position).getCantidad()));
+
 
     }
 
@@ -56,9 +60,10 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
 
     public   class  viewHolder extends RecyclerView.ViewHolder{
 
-        private TextView nombre, precio,codigo;
+        private TextView nombre, precio,codigo,cantidadDisponible;
         private CardView cardView;
         private EditText cantidad;
+        private ImageView imagencantidadproducto;
 
 
         public viewHolder(@NonNull View itemView) {
@@ -68,6 +73,9 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
             codigo = itemView.findViewById(R.id.CodigoCantidadProductoTextView);
             cardView = itemView.findViewById(R.id.recyclercantidadProductos);
             cantidad = itemView.findViewById(R.id.CantidadeditTextNumber);
+            cantidadDisponible = itemView.findViewById(R.id.CantidadDisponibleIngresarCantidadTextView);
+            imagencantidadproducto = itemView.findViewById(R.id.fotoproductocantidad);
+
 
             cantidad.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -83,6 +91,7 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
                     }else {
                         cantidades.set(getAdapterPosition(),Integer.parseInt(cantidad.getText().toString()));
                     }
+
 
                 }
 

@@ -14,12 +14,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/fotocliente"
+            android:id="@+id/fotoproductocantidad"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/ic_menu_mapmode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="50dp"
@@ -33,7 +32,7 @@
             android:layout_marginBottom="16dp"
             android:text="Código"
             app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_editor_luteWidth="0dp" />
 
@@ -44,8 +43,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="Precio"
-            app:layout_constraintBottom_toBottomOf="@+id/fotocliente"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintBottom_toBottomOf="@+id/fotoproductocantidad"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
@@ -57,7 +56,7 @@
             android:layout_marginTop="8dp"
             android:text="NombreProducto"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -79,23 +78,14 @@
             app:layout_constraintStart_toEndOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/CantidadDisponibleTextView"
+            android:id="@+id/TipoClienteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:text="Cant. Disponible"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/PrecioCantidadProductoTextView"
-            app:layout_constraintStart_toEndOf="@+id/PrecioCantidadProductoTextView"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

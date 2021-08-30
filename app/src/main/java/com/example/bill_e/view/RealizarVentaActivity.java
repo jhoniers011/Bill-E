@@ -32,6 +32,7 @@ public class RealizarVentaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_venta);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //cargando fragmento
 
@@ -67,13 +68,13 @@ public class RealizarVentaActivity extends AppCompatActivity {
         ListaProductosFragment frag = new ListaProductosFragment();
         newActivity.putExtra("productos", (Serializable) lista);
         startActivity(newActivity);
-        finish();
+        //finish();
     }
 
     public void noSeleccionado(){
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle("Error")
-                .setMessage("Debes seleccionar por lo menos un producto")
+                .setMessage("No se ha seleccionado ningún producto, por favor seleccione al menos uno para continuar")
                 //.setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override

@@ -14,42 +14,15 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/fotocliente"
+            android:id="@+id/fotoproductocantidad"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/ic_menu_mapmode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_conversion_absoluteHeight="50dp"
             tools:layout_conversion_absoluteWidth="50dp"/>
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
-            android:text="Nombres:"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_conversion_absoluteHeight="19dp"
-            tools:layout_editor_luteWidth="362dp"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Apellidos:"
-            app:layout_constraintBottom_toTopOf="@+id/textView5"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
-            tools:layout_conversion_absoluteHeight="731dp"
-            tools:layout_editor_luteWidth="0dp"/>
 
         <TextView
             android:id="@+id/textView5"
@@ -57,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Documento:"
-            app:layout_constraintBottom_toBottomOf="@+id/fotocliente"
-            app:layout_constraintStart_toEndOf="@+id/fotocliente"
+            app:layout_constraintBottom_toBottomOf="@+id/fotoproductocantidad"
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
@@ -67,18 +40,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:text="Horacio de Jesús"
-            app:layout_constraintBottom_toBottomOf="@+id/textView10"
-            app:layout_constraintStart_toEndOf="@+id/textView10" />
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/CodigoCantidadProductoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="Uribe Arbelaez"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintStart_toEndOf="@+id/textView4" />
+            app:layout_constraintStart_toEndOf="@+id/fotoproductocantidad"
+            app:layout_constraintTop_toBottomOf="@+id/NombreCantidadProductoTextView" />
 
         <TextView
             android:id="@+id/PrecioCantidadProductoTextView"
@@ -90,23 +65,23 @@
             app:layout_constraintStart_toEndOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/CantidadDisponibleTextView"
+            android:id="@+id/TipoClienteTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:text="Persona"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.179"
-            app:layout_constraintStart_toEndOf="@+id/imageView" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageCliente"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/PrecioCantidadProductoTextView"
-            app:layout_constraintStart_toEndOf="@+id/PrecioCantidadProductoTextView"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/TipoClienteTextView"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

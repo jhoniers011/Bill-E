@@ -22,6 +22,7 @@ public class IngresarProductoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingresar_producto);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         nombre = findViewById(R.id.NombreEditTextView);
         precio = findViewById(R.id.PrecioEditTextView);
@@ -52,7 +53,7 @@ public class IngresarProductoActivity extends AppCompatActivity {
     public void vacio(){
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle("Error")
-                .setMessage("Hay algún campo  vacio, por favor verifica")
+                .setMessage("No ha ingresado todos los campos obligatorios, por favor ingrese dichos valores")
                 //.setCancelable(false)
                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
