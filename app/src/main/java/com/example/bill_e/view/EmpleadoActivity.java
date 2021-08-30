@@ -39,6 +39,13 @@ public class EmpleadoActivity extends AppCompatActivity {
         IngresarProductoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                iniciarIngresarProducto();
+            }
+        });
+
+        IngresarClienteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 iniciarIngresarCliente();
             }
         });
@@ -54,8 +61,14 @@ public class EmpleadoActivity extends AppCompatActivity {
         finish();
     }
 
-    private void iniciarIngresarCliente(){
+    private void iniciarIngresarProducto(){
         Intent newActivity = new Intent(this, IngresarProductoActivity.class);
+        startActivity(newActivity);
+        finish();
+    }
+
+    private  void iniciarIngresarCliente(){
+        Intent newActivity = new Intent(this, IngresarClienteActivity.class);
         startActivity(newActivity);
         finish();
     }
