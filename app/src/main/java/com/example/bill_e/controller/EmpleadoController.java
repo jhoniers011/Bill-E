@@ -1,7 +1,9 @@
 package com.example.bill_e.controller;
 
+import android.app.Activity;
 import android.content.Context;
 
+import com.example.bill_e.adapter.CantidadProductoAdapter;
 import com.example.bill_e.adapter.ClienteAdapter;
 import com.example.bill_e.adapter.ProductoAdapter;
 import com.example.bill_e.model.LocalStorage;
@@ -9,10 +11,12 @@ import com.example.bill_e.model.dao.ClienteRoomDao;
 import com.example.bill_e.model.dao.ProductoRoomDao;
 import com.example.bill_e.model.pojo.Cliente;
 import com.example.bill_e.model.pojo.Producto;
+import com.example.bill_e.view.CantidadProductosActivity;
 import com.example.bill_e.view.EmpleadoActivity;
 import com.example.bill_e.view.RealizarVentaActivity;
 import com.example.bill_e.view.SeleccionarClienteActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoController {
@@ -21,9 +25,23 @@ public class EmpleadoController {
     private ProductoRoomDao productoRoomDao;
 
 
-    public void comprobarCantidades(){
-        //si hay algún campo cantidad vacio o mayor a las cantidades disponibles llama al metodo CantidadesVacio del ActivityCantidadProducto
-        //activityCantidadProductos.CantidadesVacio()
+    public void comprobarCantidades(CantidadProductosActivity activity, CantidadProductoAdapter adapter){
+
+        ArrayList<Integer> cantidades = adapter.getCantidades();
+        boolean vacio = false;
+
+        for (int i=0; i< cantidades.size();i++){
+            if (cantidades.get(i) == 0 || cantidades.get(i) == null){
+                vacio = true;
+                break;
+            }
+        }
+
+        if (vacio){
+            activity.cantidadesVacio();
+        }else {
+            activity.cantidadesCorrecto();
+        }
 
         //Si es correcto llama al metodo CantidadesCorrecto().
         //activityCantidadesProcucto.cantiadesCorrecto()

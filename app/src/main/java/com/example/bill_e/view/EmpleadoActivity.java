@@ -12,7 +12,7 @@ import com.example.bill_e.controller.EmpleadoController;
 
 public class EmpleadoActivity extends AppCompatActivity {
 
-    private Button GenerarFacturaButton;
+    private Button GenerarFacturaButton,IngresarProductoButton, IngresarClienteButton;
     private EmpleadoController ControllerEmpleado;
 
     @Override
@@ -21,6 +21,8 @@ public class EmpleadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GenerarFacturaButton = findViewById(R.id.GenerarFacturaButton);
+        IngresarProductoButton = findViewById(R.id.IngresarProductoButton);
+        IngresarClienteButton = findViewById(R.id.IngresarClienteButton);
         ControllerEmpleado = new EmpleadoController();
 
         ControllerEmpleado.llenarProductosyClientes(getApplicationContext());
@@ -31,6 +33,13 @@ public class EmpleadoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 conexion();
 
+            }
+        });
+
+        IngresarProductoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iniciarIngresarCliente();
             }
         });
     }
@@ -45,6 +54,11 @@ public class EmpleadoActivity extends AppCompatActivity {
         finish();
     }
 
+    private void iniciarIngresarCliente(){
+        Intent newActivity = new Intent(this, IngresarProductoActivity.class);
+        startActivity(newActivity);
+        finish();
+    }
 
 
 }

@@ -1,5 +1,7 @@
 package com.example.bill_e.adapter;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bill_e.R;
 import com.example.bill_e.model.pojo.Producto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProductoAdapter.viewHolder> {
 
-    List<Producto> listaProductos;
+    private List<Producto> listaProductos;
+    private ArrayList<Integer> cantidades;
 
     public CantidadProductoAdapter(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
+        cantidades = new ArrayList<Integer>(Collections.nCopies(listaProductos.size(),0));
     }
 
     @NonNull
@@ -39,6 +45,10 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
 
     }
 
+    public ArrayList<Integer> getCantidades() {
+        return cantidades;
+    }
+
     @Override
     public int getItemCount() {
         return listaProductos.size();
@@ -50,6 +60,7 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
         private CardView cardView;
         private EditText cantidad;
 
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.NombreCantidadProductoTextView);
@@ -57,6 +68,29 @@ public class CantidadProductoAdapter extends RecyclerView.Adapter<CantidadProduc
             codigo = itemView.findViewById(R.id.CodigoCantidadProductoTextView);
             cardView = itemView.findViewById(R.id.recyclercantidadProductos);
             cantidad = itemView.findViewById(R.id.CantidadeditTextNumber);
+
+            cantidad.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String aux = cantidad.getText().toString();
+                    if (aux.compareTo("") == 0){
+                        cantidades.set(getAdapterPosition(),null);
+                    }else {
+                        cantidades.set(getAdapterPosition(),Integer.parseInt(cantidad.getText().toString()));
+                    }
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
         }
     }
 

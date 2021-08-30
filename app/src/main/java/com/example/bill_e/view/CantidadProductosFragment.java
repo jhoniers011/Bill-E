@@ -59,4 +59,8 @@ public class CantidadProductosFragment extends Fragment {
 
         return view;
     }
+
+    public CantidadProductoAdapter getAdapter(){
+        return adapterCantidadProducto;
+    }
 }

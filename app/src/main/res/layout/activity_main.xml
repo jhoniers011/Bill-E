@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/IngresarClienteButton"
         android:layout_width="331dp"
         android:layout_height="86dp"
         android:layout_marginTop="212dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/IngresarProductoButton"
         android:layout_width="331dp"
         android:layout_height="86dp"
         android:layout_marginTop="324dp"
