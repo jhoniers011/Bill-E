@@ -24,6 +24,22 @@ public class CantidadProductosActivity extends AppCompatActivity {
         fragment = new CantidadProductosFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.LayoutCantidadProducto,fragment).commit();
 
-        //ArrayList<Producto> lista = (ArrayList<Producto>) getIntent().getExtras().getSerializable("productos");
+    }
+
+
+    public  void comprobar(){
+        //Este metodo envia los datos de las cantidades de los productos al controlador.
+        //seria un empleadoControlador.comprobarCantidades()
+    }
+
+    public void cantidadesVacio(){
+
+        //Muestra un AlertDialog con un mensaje de error que hay algun campo cantidad vacio
+
+    }
+
+    public void cantidadesCorrecto(){
+        //Muestra un mensaje en el que se dice que se envió la factura a la Dian y se le enviará a su correo electronico.
+        //despues al darle ok al mensaje, vuelve al menu principal.
     }
 }

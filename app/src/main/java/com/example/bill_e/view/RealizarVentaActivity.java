@@ -61,10 +61,12 @@ public class RealizarVentaActivity extends AppCompatActivity {
 
     public void ComprobadoExito(){
         Intent newActivity = new Intent(this, CantidadProductosActivity.class);
+        Bundle datosafragment = new Bundle();
         Cliente cliente = (Cliente) getIntent().getExtras().getSerializable("cliente");
         newActivity.putExtra("clienteproductos",cliente);
         ArrayList<Producto> lista = productoAdapter.getSelectedItems();
-        newActivity.putExtra("productos", (Serializable) lista);
+        datosafragment.putSerializable("productos",lista);
+        //newActivity.putExtra("productos", (Serializable) lista);
         startActivity(newActivity);
         finish();
     }

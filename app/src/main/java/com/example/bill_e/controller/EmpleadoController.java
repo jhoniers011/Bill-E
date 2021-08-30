@@ -21,6 +21,14 @@ public class EmpleadoController {
     private ProductoRoomDao productoRoomDao;
 
 
+    public void comprobarCantidades(){
+        //si hay algún campo cantidad vacio o mayor a las cantidades disponibles llama al metodo CantidadesVacio del ActivityCantidadProducto
+        //activityCantidadProductos.CantidadesVacio()
+
+        //Si es correcto llama al metodo CantidadesCorrecto().
+        //activityCantidadesProcucto.cantiadesCorrecto()
+    }
+
     public void comprobarConexion(EmpleadoActivity EmpleadoActivity){
         // Si hay conexión
         EmpleadoActivity.conexionCorrecta();
