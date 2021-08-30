@@ -10,8 +10,8 @@ public class Producto {
     private int pid;
     private int codigo_barras;
     private String nombre;
-    private String precio;
-    private String costo;
+    private int precio;
+    private int costo;
     private int  cantidad;
     private int iva;
     private String marca;
@@ -41,19 +41,19 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
-    public String getCosto() {
+    public int getCosto() {
         return costo;
     }
 
-    public void setCosto(String costo) {
+    public void setCosto(int     costo) {
         this.costo = costo;
     }
 

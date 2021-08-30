@@ -23,7 +23,7 @@ public class EmpleadoActivity extends AppCompatActivity {
         GenerarFacturaButton = findViewById(R.id.GenerarFacturaButton);
         ControllerEmpleado = new EmpleadoController();
 
-
+        ControllerEmpleado.llenarProductosyClientes(getApplicationContext());
 
 
         GenerarFacturaButton.setOnClickListener(new View.OnClickListener() {

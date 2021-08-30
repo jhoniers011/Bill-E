@@ -10,17 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bill_e.R;
+import com.example.bill_e.model.pojo.Cliente;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHolder>{
 
-    private List<String> listaClientes; //por ahora de tipo string para pasar un dato, cuando se implemente la parte de model se cambio a tipo cliente.
+    private List<Cliente> listaClientes;
     private Context context;
     private int position = -1;
 
-    public ClienteAdapter(List<String> listaClientes, Context context) {
+    public ClienteAdapter(List<Cliente> listaClientes, Context context) {
         this.listaClientes = listaClientes;
         this.context = context;
     }
@@ -35,22 +36,20 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        holder.nombres.setText(listaClientes.get(position));
-        //holder.apellidos.setText("Nuevo Apellido");
-        //holder.cedula.setText("123456");
+        holder.nombres.setText(listaClientes.get(position).getNombre());
+        holder.apellidos.setText(listaClientes.get(position).getApellidos());
+        holder.cedula.setText(listaClientes.get(position).getDocumentoidentidad());
 
         holder.bind();
     }
-
-    public void comprobarPosicion(viewHolder holder){
-
-        if (position != holder.getAdapterPosition()) {
-            notifyItemChanged(position);
-            position = holder.getAdapterPosition();
+    public Cliente getSelected(){
+        if (position != -1){
+            return listaClientes.get(position);
         }
-
+        return null;
     }
 
+    public int getPosition(){return this.position;}
 
 
     @Override
@@ -65,12 +64,14 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.viewHold
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            nombres = itemView.findViewById(R.id.NombresListaClientesTextView);
-            apellidos = itemView.findViewById(R.id.ApellidosListaClientesTextView);
-            cedula = itemView.findViewById(R.id.CedulaListaClientesTextView);
+            nombres = itemView.findViewById(R.id.NombreListaProductosTextView);
+            apellidos = itemView.findViewById(R.id.CodigoListaProductosTextView);
+            cedula = itemView.findViewById(R.id.PrecioListaClientesTextView);
             cardView = itemView.findViewById(R.id.TarjetaClienteCardView);
 
         }
+
+
 
         void bind(){
             if (position == -1){

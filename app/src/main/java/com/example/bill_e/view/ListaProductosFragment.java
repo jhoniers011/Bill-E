@@ -12,29 +12,35 @@ import android.view.ViewGroup;
 
 import com.example.bill_e.R;
 import com.example.bill_e.adapter.ClienteAdapter;
+import com.example.bill_e.adapter.ProductoAdapter;
 import com.example.bill_e.controller.EmpleadoController;
 import com.example.bill_e.model.pojo.Cliente;
+import com.example.bill_e.model.pojo.Producto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ListaClientesFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link ListaProductosFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class ListaProductosFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private RecyclerView recyclerListaClientes;
-    private ClienteAdapter adapterCliente;
-    private EmpleadoController empleadoController;
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public ListaClientesFragment() {
+    private RecyclerView recyclerListaProductos;
+    private ProductoAdapter adapterProducto;
+    private EmpleadoController empleadoController;
+
+    public ListaProductosFragment() {
         // Required empty public constructor
     }
 
@@ -44,11 +50,11 @@ public class ListaClientesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ListaClientesFragment.
+     * @return A new instance of fragment ListaProductosFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListaClientesFragment newInstance(String param1, String param2) {
-        ListaClientesFragment fragment = new ListaClientesFragment();
+    public static ListaProductosFragment newInstance(String param1, String param2) {
+        ListaProductosFragment fragment = new ListaProductosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,23 +75,17 @@ public class ListaClientesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_lista_clientes, container, false);
-        recyclerListaClientes = vista.findViewById(R.id.recyclerListaClientes);
-        recyclerListaClientes.setLayoutManager(new LinearLayoutManager(getContext()));
+        View view = inflater.inflate(R.layout.fragment_lista_productos, container, false);
+        recyclerListaProductos = view.findViewById(R.id.recyclerListaProductos);
+        recyclerListaProductos.setLayoutManager(new LinearLayoutManager(getContext()));
         empleadoController = new EmpleadoController();
 
+        List<Producto> ListaProducto = new ArrayList<>();
+        ListaProducto =  empleadoController.listarProductos(getContext());
 
-        List<Cliente> ListaClientes = new ArrayList<>();
-        ListaClientes =  empleadoController.listarClientes(getContext());
+        adapterProducto = new ProductoAdapter(ListaProducto,getContext());
+        recyclerListaProductos.setAdapter(adapterProducto);
 
-
-        adapterCliente = new ClienteAdapter(ListaClientes,getContext());
-        recyclerListaClientes.setAdapter(adapterCliente);
-
-        return vista;
-    }
-
-    public ClienteAdapter getAdapterCliente() {
-        return adapterCliente;
+        return view;
     }
 }

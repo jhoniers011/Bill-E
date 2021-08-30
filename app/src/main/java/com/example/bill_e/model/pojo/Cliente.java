@@ -3,14 +3,16 @@ package com.example.bill_e.model.pojo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int cid;
     private String tipodocumento;
-    private int documentoidentidad;
-    private int telefono;
+    private String documentoidentidad;
+    private String telefono;
     private String email;
     private String direccion;
     private String pais;
@@ -47,19 +49,19 @@ public class Cliente {
         this.tipodocumento = tipodocumento;
     }
 
-    public int getDocumentoidentidad() {
+    public String getDocumentoidentidad() {
         return documentoidentidad;
     }
 
-    public void setDocumentoidentidad(int documentoidentidad) {
+    public void setDocumentoidentidad(String documentoidentidad) {
         this.documentoidentidad = documentoidentidad;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
