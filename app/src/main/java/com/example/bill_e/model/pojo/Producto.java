@@ -3,8 +3,10 @@ package com.example.bill_e.model.pojo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Producto {
+public class Producto implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int pid;

@@ -22,6 +22,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
 
     private List<Producto> listaproductos;
     private Context context;
+    boolean isSelectedMode = false;
+    List<Producto> SelectedItems = new ArrayList<Producto>();
 
 
     public ProductoAdapter(List<Producto> Listaproductos,Context context) {
@@ -29,12 +31,19 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
         this.context = context;
     }
 
-    public void setProducto(List<Producto> productos){
-            this.listaproductos = new ArrayList<>();
-            this.listaproductos = productos;
-            notifyDataSetChanged();
-    }
 
+    public boolean getSelected(){
+        if (SelectedItems.size() <= 0){
+            return  false;
+        }
+        else {
+            return  true;
+        }
+
+    }
+    public List<Producto> getSelectedItems(){
+        return  SelectedItems;
+    }
 
     @NonNull
     @Override
@@ -49,6 +58,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
         holder.nombre.setText(listaproductos.get(position).getNombre());
         holder.codigo.setText(Integer.toString(listaproductos.get(position).getCodigo_barras()));
         holder.cantidad.setText("Cantiodad: "+ Integer.toString(listaproductos.get(position).getCantidad()));
+
 
     }
 
@@ -71,6 +81,27 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.viewHo
             cantidad = itemView.findViewById(R.id.CantidadDisponibleTextView);
             codigo = itemView.findViewById(R.id.CodigoListaProductosTextView);
             cardView = itemView.findViewById(R.id.TarjetaProductoCardView);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isSelectedMode = true;
+
+                    if (isSelectedMode){
+                        if (SelectedItems.contains(listaproductos.get(getAdapterPosition()))){
+                            cardView.setChecked(false);
+                            SelectedItems.remove(listaproductos.get(getAdapterPosition()));
+                        }else {
+                            cardView.setChecked(true);
+                            SelectedItems.add(listaproductos.get(getAdapterPosition()));
+                        }
+                        if (SelectedItems.size() == 0){
+                            isSelectedMode = false;
+                        }
+                    }
+                }
+            });
 
         }
 

@@ -3,12 +3,14 @@ package com.example.bill_e.controller;
 import android.content.Context;
 
 import com.example.bill_e.adapter.ClienteAdapter;
+import com.example.bill_e.adapter.ProductoAdapter;
 import com.example.bill_e.model.LocalStorage;
 import com.example.bill_e.model.dao.ClienteRoomDao;
 import com.example.bill_e.model.dao.ProductoRoomDao;
 import com.example.bill_e.model.pojo.Cliente;
 import com.example.bill_e.model.pojo.Producto;
 import com.example.bill_e.view.EmpleadoActivity;
+import com.example.bill_e.view.RealizarVentaActivity;
 import com.example.bill_e.view.SeleccionarClienteActivity;
 
 import java.util.List;
@@ -25,6 +27,18 @@ public class EmpleadoController {
 
         // Si no hay conexión
 
+
+    }
+
+    public void comprobarSeleccionarProducto(RealizarVentaActivity activity, ProductoAdapter adapter){
+
+        if (!adapter.getSelected()){
+            activity.noSeleccionado();
+            return;
+        }
+        else {
+            activity.ComprobadoExito();
+        }
 
     }
 
